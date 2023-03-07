@@ -1,12 +1,11 @@
 import axios from "axios";
-import { Notify } from "quasar";
-
+//import { Notify } from "quasar";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? "../api"
- //   : "https://";
-  : "https://localhost:7059";
+    : //   : "https://";
+      "https://localhost:7059";
 
 const defaultOptions = {
   baseURL: baseUrl,
@@ -20,6 +19,8 @@ instance.defaults.headers = {
   Pragma: "no-cache",
   Expires: "0",
   "Access-Control-Allow-Origin": "*",
+  "X-RapidAPI-Key": "f2abd86da7mshf1efb901fe89fd5p1ff2b9jsnc728ad1f9d5a",
+  "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
 };
 
 // we need this for IE, there is an issue with IE 11 caching get api requests
@@ -28,6 +29,8 @@ instance.defaults.headers = {
   Pragma: "no-cache",
   Expires: "0",
   "Access-Control-Allow-Origin": "*",
+  "X-RapidAPI-Key": "f2abd86da7mshf1efb901fe89fd5p1ff2b9jsnc728ad1f9d5a",
+  "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
 };
 
 // instance.interceptors.response.use(
@@ -81,6 +84,11 @@ instance.defaults.headers = {
 //   }
 // }
 
-const Api = {};
+const Api = {
+  getMovieByTitle: (title, limit, sortArg) =>
+    instance.get(
+      `https://imdb8.p.rapidapi.com/title/v2/find?title=${title}&limit=${limit}&${sortArg}`
+    ),
+};
 
 export default Api;
