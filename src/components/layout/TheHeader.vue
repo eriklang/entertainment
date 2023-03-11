@@ -20,14 +20,17 @@
 export default {
   name: "TheHeader",
   data() {
-    return {
-      isDrawerOpen: true,
-    };
+    return {};
+  },
+  methods: {
+    drawerClick() {
+      this.$store.commit("changeDrawerOpen", !this.isDrawerOpen);
+    },
   },
   computed: {
-    // isDrawerOpen() {
-    //   return this.drawerOpen;
-    // },
+    isDrawerOpen() {
+      return this.drawerOpen;
+    },
   },
 };
 </script>
