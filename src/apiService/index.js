@@ -89,6 +89,8 @@ const Api = {
     instance.get(
       `https://imdb8.p.rapidapi.com/title/v2/find?title=${title}&limit=${limit}&${sortArg}`
     ),
+  getTitleById: (id) =>
+    instance.get(`https://imdb8.p.rapidapi.com/title/get-details?tconst=${id}`),
 };
 
 export default Api;
